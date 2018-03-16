@@ -16,10 +16,17 @@ class Player{
         this.skills.push(skill);
     }
 
-    useSkill(){
-
+    useSkill(index, target){
+        if(this.skills[index].cost <= this.mana){
+            this.mana = this.mana - this.skills[index].cost;
+            this.skills[index].effect(target);
+            return this.mana;
+        }
+        else return false;
     }
 
+    //mana bug
+    
     changeHealth(amount){
         if(amount < 0){
             if(this.health < Math.abs(amount)) this.health = 0;
@@ -50,13 +57,14 @@ class Player{
         this.changeHealth(1);
     }
 
+    loseMana(amount){
+        this.changeMana(-amount);
+    }
+
     gainMana(amount){
         this.changeMana(amount);
     }
 
-    loseMana(amount){
-        this.changeMana(-amount);
-    }
 
     isAlive(){
         return this.health > 0;
