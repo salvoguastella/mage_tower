@@ -17,20 +17,28 @@ class Player{
     }
 
     useSkill(index, target){
-        if(this.skills[index].cost <= this.mana){
-            this.mana = this.mana - this.skills[index].cost;
-            this.skills[index].effect(target);
-            return this.mana;
+        if(!this.isExhaust){
+            if(this.skills[index].cost <= this.mana){
+                this.mana = this.mana - this.skills[index].cost;
+                return this.skills[index].effect(this, target);
+            }
+            else return "no_mana";
         }
-        else return false;
+        else return "exhaust";
+    }
+  
+    hasFullHealth(){
+        return (this.health >= this.maxHealth);
     }
 
-    //mana bug
-    
+    hasFullMana(){
+        return (this.mana >= this.maxMana);
+    }
+
     changeHealth(amount){
         if(amount < 0){
             if(this.health < Math.abs(amount)) this.health = 0;
-            else this.health-=amount; 
+            else this.health+=amount; 
         }
         else{
             if(this.health + amount > this.maxHealth) this.health = this.maxHealth;
@@ -41,7 +49,7 @@ class Player{
     changeMana(amount){
         if(amount < 0){
             if(this.mana < Math.abs(amount)) this.mana = 0;
-            else this.mana-=amount; 
+            else this.mana+=amount; 
         }
         else{
             if(this.mana + amount > this.maxMana) this.mana = this.maxMana;

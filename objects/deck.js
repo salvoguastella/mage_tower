@@ -3,9 +3,12 @@ const Deck = require("../interfaces/deck");
 
 const deck = new Deck();
 
-deck.addRoom(new Room("uno", "due", "tre", "quattro"));
-deck.addRoom(new Room("cane", "gatto", "coniglio", "papera"));
-deck.addRoom(new Room("forchetta", "coltello", "cucchiaio", "piatto"));
-deck.addRoom(new Room("rosso", "verde", "blu", "giallo"));
+
+//uses keys defined in objexts/names.js
+//north,east,south,west,[seal]
+deck.addRoom(new Room("exhaust", "damage", "burn", "heal", "blue"));
+deck.addRoom(new Room("silence", "exhaust", "twoDamage", "burn"));
+deck.addRoom(new Room("damage", "burn", "silence", "exhaust", "purple"));
+deck.addRoom(new Room("heal","damage","twoDamage", "exhaust", "green"));
 
 module.exports = deck;

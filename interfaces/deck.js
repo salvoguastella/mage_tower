@@ -14,10 +14,14 @@ class Deck{
             this.rooms[j] = x;
         }
     }
+    isEmpty(){
+        return this.rooms.length <= 0;
+    }
     draw(){
         const room = this.rooms.splice(0,1);
         //this.rooms.shift();
-        return room;
+        console.log(this.rooms.length + " rooms left...");
+        return room[0];
     }
     reveal(){
         return this.rooms[0];

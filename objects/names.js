@@ -7,7 +7,15 @@ const Names = {
         heal : "Restore 1 health",
         silence : "Silence"
     },
+    seals:{
+        green: "Restoration",
+        blue: "Chaos",
+        yellow: "Protection",
+        purple: "Mind"
+    },
     skills:{
 
     }
 }
+
+module.exports = Names;

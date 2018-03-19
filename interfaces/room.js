@@ -1,9 +1,10 @@
 class Room{
-    constructor(n_effect,e_effect,s_effect, w_effect){
+    constructor(n_effect,e_effect,s_effect, w_effect, seal = false){
         this.north = n_effect;
         this.east = e_effect;
         this.south = s_effect;
         this.west = w_effect;
+        this.seal = seal;
     }
 
     //rotate by 90deg
